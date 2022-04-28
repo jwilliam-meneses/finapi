@@ -13,7 +13,7 @@ Simples API de operações financeiras criada para praticar conceitos básicos d
 - [x] Deve ser possível obter dados da conta do cliente
 - [x] Deve ser possível deletar uma conta
 - [x] Deve ser possível retorna o SALDO da conta
-
+- [x] Deve ser possível listar todas as contas
 ---
 
 ## Regras de Negócio

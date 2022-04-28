@@ -35,6 +35,10 @@ function getBalance(statement) {
   return balance;
 }
 
+app.get('/accounts', (request, response) => {
+  return response.status(200).json(customers)
+})
+
 app.post('/account', (request, response) => {
   const { cpf, name } = request.body
 
