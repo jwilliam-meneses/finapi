@@ -1,4 +1,5 @@
 const express = require('express')
+const req = require('express/lib/request')
 const { v4: uuidv4 } = require('uuid')
 
 const app = express()
@@ -57,6 +58,19 @@ app.get('/statement/', verifyIfExistsAccountCPF, (request, response) => {
   const { customer } = request
 
   return response.status(200).json(customer.statement)
+})
+
+app.get('/statement/date', verifyIfExistsAccountCPF, (request, response) => {
+  const { customer } = request
+  const { date } = request.query
+
+  const dateFormat = new Date(date + ' 00:00')
+
+  const statement = customer.statement.filter(statement => {
+    return statement.created_at.toDateString() === dateFormat.toDateString()
+  })
+
+  return response.status(200).json(statement)
 })
 
 app.post('/deposit', verifyIfExistsAccountCPF, (request, response) => {
